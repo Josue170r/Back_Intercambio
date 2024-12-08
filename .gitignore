@@ -34,3 +34,5 @@ build/
 
 #env
 .envs/.local/.mysql
+!.envs/
+!.envs/**
