@@ -41,7 +41,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public Usuario readUserById(Long id) {
         return userRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Usuario no encontrado")
+            () -> new RuntimeException("Usuario no encontrado")
+        );
+    }
+
+    @Override
+    public Usuario findByUserName(String username) {
+        return userRepository.findByUserName(username).orElseThrow(
+            () -> new RuntimeException("Usuario no encontrado")
         );
     }
 

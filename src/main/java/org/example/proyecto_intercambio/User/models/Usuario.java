@@ -9,7 +9,6 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -52,6 +51,19 @@ public class Usuario implements Serializable {
     @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "idUsuario=" + idUsuario +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
+
     public Long getIdUsuario() {
         return idUsuario;
     }
@@ -78,5 +90,33 @@ public class Usuario implements Serializable {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
