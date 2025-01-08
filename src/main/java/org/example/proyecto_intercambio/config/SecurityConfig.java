@@ -43,11 +43,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/**").permitAll();
-                    registry.anyRequest().authenticated();
-                })
-                .build();
+            .csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests(registry -> {
+                registry.requestMatchers("/**").permitAll();
+                registry.anyRequest().authenticated();
+            })
+            .build();
     }
 }
