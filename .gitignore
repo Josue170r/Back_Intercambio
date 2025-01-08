@@ -34,5 +34,6 @@ build/
 
 #env
 .envs/.local/.mysql
+.envs/.local/.smtp
 !.envs/
 !.envs/**
