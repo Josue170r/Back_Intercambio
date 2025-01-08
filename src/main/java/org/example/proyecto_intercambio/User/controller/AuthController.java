@@ -1,4 +1,4 @@
-package org.example.proyecto_intercambio.controller;
+package org.example.proyecto_intercambio.User.controller;
 import org.example.proyecto_intercambio.User.models.LoginRequest;
 import org.example.proyecto_intercambio.User.models.Usuario;
 import org.example.proyecto_intercambio.User.service.UserService;
@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;

@@ -1,13 +1,16 @@
 package org.example.proyecto_intercambio.User.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.example.proyecto_intercambio.Intercambio.models.IntercambioModel;
 
 import java.io.Serializable;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -51,13 +54,16 @@ public class Usuario implements Serializable {
     @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "createdBy", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = {"createdBy", "handler", "hibernateLazyInitializer"}, allowSetters = true)
+    private List<IntercambioModel> intercambios;
+
     @Override
     public String toString() {
         return "Usuario{" +
                 "idUsuario=" + idUsuario +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -118,5 +124,13 @@ public class Usuario implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<IntercambioModel> getIntercambios() {
+        return intercambios;
+    }
+
+    public void setIntercambios(List<IntercambioModel> intercambios) {
+        this.intercambios = intercambios;
     }
 }
