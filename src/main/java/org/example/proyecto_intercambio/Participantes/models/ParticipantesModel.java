@@ -1,6 +1,5 @@
 package org.example.proyecto_intercambio.Participantes.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +7,6 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.proyecto_intercambio.Intercambio.models.IntercambioModel;
 
@@ -81,5 +79,15 @@ public class ParticipantesModel {
 
     public void setIntercambio(IntercambioModel intercambio) {
         this.intercambio = intercambio;
+    }
+
+    @Override
+    public String toString() {
+        return "ParticipantesModel{" +
+                "idParticipante=" + idParticipante +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

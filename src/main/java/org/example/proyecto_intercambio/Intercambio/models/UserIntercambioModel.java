@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.example.proyecto_intercambio.Participantes.models.ParticipantesModel;
 import org.example.proyecto_intercambio.User.models.Usuario;
 
 @NoArgsConstructor
@@ -29,6 +30,11 @@ public class UserIntercambioModel {
     @JoinColumn(name = "intercambio", nullable = false)
     private IntercambioModel intercambio;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "giveTo", nullable = false)
+    @JsonIgnoreProperties(value = {"intercambio", "handler", "hibernateLazyInitializer"}, allowSetters = true)
+    private ParticipantesModel participante;
+
     public Long getIdIntercambio() {
         return idIntercambio;
     }
@@ -51,5 +57,13 @@ public class UserIntercambioModel {
 
     public void setIntercambio(IntercambioModel intercambio) {
         this.intercambio = intercambio;
+    }
+
+    public ParticipantesModel getParticipante() {
+        return participante;
+    }
+
+    public void setParticipante(ParticipantesModel participante) {
+        this.participante = participante;
     }
 }

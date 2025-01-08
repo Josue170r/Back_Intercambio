@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class IntercambioSerImpl implements IntercambioService {
@@ -72,9 +73,18 @@ public class IntercambioSerImpl implements IntercambioService {
                 "No se encontró un intercambio con el ID de invitación proporcionado: " + joinIntercambio.getIdInvitacion()
             );
         }
+
+        List<ParticipantesModel> participantes = intercambio.getParticipantes();
+        if (participantes != null) {
+            participantes.removeIf(participante -> participante.getEmail().equals(usuario.getEmail()));
+        }
+        Random random = new Random();
+        ParticipantesModel participanteAsignado = participantes.get(random.nextInt(participantes.size()));
+        System.out.println(participanteAsignado.toString());
         UserIntercambioModel userIntercambioModel = new UserIntercambioModel();
         userIntercambioModel.setIntercambio(intercambio);
         userIntercambioModel.setUsuario(usuario);
+        userIntercambioModel.setParticipante(participanteAsignado);
         userIntercambiorep.save(userIntercambioModel);
     }
 
